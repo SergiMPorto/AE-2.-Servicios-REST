@@ -1,18 +1,18 @@
 package es.SistemasRest.entidad;
 
-public class libro {
+public class Libro {
 	
 	private int id;
 	private String titulo;
-	private String editorial;
+	private String autor;
 	private String nota;
 	
 	
-	public libro(int id, String titulo, String editorial, String nota) {
+	public Libro(int id, String titulo, String autor, String nota) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
-		this.editorial = editorial;
+		this.autor = autor;
 		this.nota = nota;
 	}
 
@@ -37,13 +37,15 @@ public class libro {
 	}
 
 
-	public String getEditorial() {
-		return editorial;
+
+
+	public String getAutor() {
+		return autor;
 	}
 
 
-	public void setEditorial(String editorial) {
-		this.editorial = editorial;
+	public void setAutor(String autor) {
+		this.autor = autor;
 	}
 
 
