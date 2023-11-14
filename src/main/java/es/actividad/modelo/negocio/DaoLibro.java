@@ -36,8 +36,20 @@ public class DaoLibro {
 	 * Metodo que introduce un libro en la lista
 	 * @param l el libro que queremos introducir
 	 */
-	public void addLibro(Libro l) {
+	public boolean addLibro(Libro l) {
+		
+		for(Libro libro : listaLibros) {
+			if(libro.getIdLibro() == l.getIdLibro()) {
+				System.out.println("addLibro --> Libro existente, cambie ID");
+				return false;
+			}
+		}
+		
 		listaLibros.add(l);
+		System.out.println("addLibro --> Libro añadido con éxito");
+		return true;
+		
+		
 	}
 	
 	/**

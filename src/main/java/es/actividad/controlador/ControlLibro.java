@@ -66,8 +66,13 @@ public class ControlLibro {
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Libro> altaLibro(@RequestBody Libro l) {
 		System.out.println("altaPersona: objeto persona: " + l);
-		dl.addLibro(l);
-		return new ResponseEntity<Libro>(l,HttpStatus.CREATED);//201 CREATED
+		boolean bandera = dl.addLibro(l);
+		
+		if(bandera == true) {
+			return new ResponseEntity<Libro>(l,HttpStatus.CREATED);//201 CREATED
+		} else {
+			return new ResponseEntity<Libro>(HttpStatus.BAD_REQUEST);//400
+		}
 	}
 	
 	@GetMapping(path="libros",produces = MediaType.APPLICATION_JSON_VALUE)
