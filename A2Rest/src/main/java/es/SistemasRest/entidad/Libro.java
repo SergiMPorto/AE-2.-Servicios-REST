@@ -27,6 +27,12 @@ public class Libro {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", nota=" + nota + "]";
+	}
+
+
 	public String getTitulo() {
 		return titulo;
 	}

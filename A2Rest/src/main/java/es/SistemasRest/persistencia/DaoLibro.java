@@ -28,9 +28,24 @@ public class DaoLibro {
     }
 
     public Libro getLibroByID(int id) {
-        return listaLibros.get(id);
+    	{
+            try {
+                for(Libro libro : listaLibros) {
+                    if(libro.getId()== id) {
+                        return libro;
+                    }
+                }
+            }catch (IndexOutOfBoundsException iobe) {
+                System.out.println("getLibro -> Libro fuera de rango");
+                return null;
+            }
+
+            return null;
+
+        }
+
     }
-    
+
   
 
     public List<Libro> list() {
@@ -41,7 +56,7 @@ public class DaoLibro {
         boolean existeLibros = false;
 
         for (Libro existeLibro : listaLibros) {
-            if (existeLibro.getId() == l.getId() || existeLibro.getTitulo().equals(l.getTitulo())) {
+            if (existeLibro.getId() == l.getId() ) {
                 existeLibros = true;
                 break;
             }
@@ -53,10 +68,15 @@ public class DaoLibro {
     }
 
 
-    public Libro eliminar(int id) {
-        return listaLibros.remove(id);
+    public boolean eliminar(int id) {
+    	for (Libro libro : listaLibros) {
+            if (libro.getId() == id) {
+                listaLibros.remove(libro);
+                return true; 
+            }
+        }
+        return false; 
     }
-    
     public Libro modificar(Libro l) {
 		try {
 			Libro lAux = listaLibros.get(l.getId());

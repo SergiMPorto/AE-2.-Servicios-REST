@@ -20,7 +20,7 @@ import es.SistemasRest.entidad.Libro;
 import es.SistemasRest.persistencia.DaoLibro;
 
 @RestController
-  // Ruta base para todos los endpoints del controlador
+  
 public class ControladorLibros {
 
     @Autowired
@@ -66,15 +66,9 @@ public class ControladorLibros {
 	  }
   }
   
-  @DeleteMapping(path="libros/{i}")
-  public ResponseEntity<Libro>eliminarLibro(@PathVariable("id") int id){
-	  System.out.println("ID del Libro a Borrar " + id);
-	  Libro l =daoLibro.eliminar(id);
-	  if( l != null) { 
-		  return new ResponseEntity<Libro>(HttpStatus.OK); 
-		  }else {
-			  return new ResponseEntity<Libro>(HttpStatus.NOT_FOUND);
-		  }
+  @DeleteMapping(path = "/{id}")
+  public ResponseEntity<Libro> eliminarLibro(@PathVariable("id") int id) {
+      return daoLibro.eliminar(id) ? new ResponseEntity<>(HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
   }
     
 }
