@@ -33,22 +33,17 @@ public class ServicioProxyLibro {
 	 */
 	public Libro obtener(int id){
 		try {
-			//Como el servicio trabaja con objetos ResponseEntity, nosotros 
-			//tambien podemos hacerlo en el cliente
-			//Ej http://localhost:8080/personas/1 GET
+			
 			ResponseEntity<Libro> re = restTemplate.getForEntity(URL + "/" + id, Libro.class);
 			HttpStatus hs= (HttpStatus) re.getStatusCode();
 			if(hs == HttpStatus.OK) {	
-				//Si la persona existe, la persona viene en formato JSON en el body
-				//Al ser el objeto ResponseEntity de tipo Persona, al obtener el 
-				//body me lo convierte automaticamente a tipo Persona
-				//(Spring utiliza librerías por debajo para pasar de JSON a objeto)
+				
 				return re.getBody();
 			}else {
 				System.out.println("obtener -> Respuesta no contemplada");
 				return null;
 			}
-		}catch (HttpClientErrorException e) {//Errores 4XX
+		}catch (HttpClientErrorException e) {
 			System.out.println("obtener -> La persona NO se ha encontrado, id: " + id);
 		    System.out.println("obtener -> Codigo de respuesta: " + e.getStatusCode());
 		    return null;
@@ -64,14 +59,11 @@ public class ServicioProxyLibro {
 	 */
 	public Libro alta(Libro l){
 		try {
-			//Para hacer un post de una entidad usamos el metodo postForEntity
-			//El primer parametro la URL
-			//El segundo parametros la persona que ira en body
-			//El tercer parametro el objeto que esperamos que nos envie el servidor
+			
 			ResponseEntity<Libro> re = restTemplate.postForEntity(URL + "/", l, Libro.class);
 			System.out.println("alta -> Codigo de respuesta " + re.getStatusCode());
 			return re.getBody();
-		} catch (HttpClientErrorException e) {//Errores 4XX
+		} catch (HttpClientErrorException e) {
 			System.out.println("alta -> La persona NO se ha dado de alta, id: " + l);
 		    System.out.println("alta -> Codigo de respuesta: " + e.getStatusCode());
 		    return null;
@@ -91,9 +83,7 @@ public class ServicioProxyLibro {
 	 */
 	public boolean modificar(Libro l){
 		try {
-			//El metodo put de Spring no devuelve nada
-			//si no da error se ha dado de alta y si no daria una 
-			//excepcion
+			
 			restTemplate.put(URL + "/" + l.getIdLibro(), l, Libro.class);
 			return true;
 		} catch (HttpClientErrorException e) {
@@ -113,9 +103,7 @@ public class ServicioProxyLibro {
 	 */
 	public boolean borrar(int id){
 		try {
-			//El metodo delete tampoco devuelve nada, por lo que si no 
-			//ha podido borrar el id, daría un excepcion
-			//Ej http://localhost:8080/personas/1 DELETE
+			
 			restTemplate.delete(URL + "/" + id);
 			return true;
 		} catch (HttpClientErrorException e) {
@@ -143,11 +131,11 @@ public class ServicioProxyLibro {
 		}
 		
 		try {
-			//Ej http://localhost:8080/personas?nombre=harry GET
+			
 			ResponseEntity<Libro[]> response =
 					  restTemplate.getForEntity(URL  + queryParams,Libro[].class);
 			Libro[] arrayPersonas = response.getBody();
-			return Arrays.asList(arrayPersonas);//convertimos el array en un ArrayList
+			return Arrays.asList(arrayPersonas);
 		} catch (HttpClientErrorException e) {
 			System.out.println("listar -> Error al obtener la lista de libros");
 		    System.out.println("listar -> Codigo de respuesta: " + e.getStatusCode());
