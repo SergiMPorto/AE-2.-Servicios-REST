@@ -103,7 +103,7 @@ public class A2Rest1ClienteApplication implements CommandLineRunner {
                     Libro libro = spl.obtenerLibro(id);
 
                     if (libro != null) {
-                        System.out.println("El título del libro buscado es: " + libro.getTitulo());
+                        System.out.println("El título del libro buscado es: " + libro.getTitulo()+" "+libro.getAutor()+" "+libro.getNota());
                     } else {
                         System.out.println("Libro no encontrado");
                     }

@@ -33,7 +33,7 @@ public class ControladorLibros {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
+//Añadir libro
     @PostMapping(path = "libros", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Libro> altaLibro(@RequestBody Libro l) {
         System.out.println("Dando de alta el libro: " + l);
@@ -45,7 +45,7 @@ public class ControladorLibros {
     public ResponseEntity<List<Libro>> listaLibros() {
         return new ResponseEntity<>(daoLibro.list(), HttpStatus.OK);
     }
-
+//Modificar Libro 
     @PutMapping(path = "libros/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Libro> modificarLibro(@PathVariable("id") int id, @RequestBody Libro l) {
         System.out.println("ID a modificar: " + id);
@@ -57,7 +57,7 @@ public class ControladorLibros {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @DeleteMapping("libros/{id}")
+    @DeleteMapping(path="libros/{id}")
     public ResponseEntity<Libro> eliminarLibro(@PathVariable("id") int id) {
         boolean eliminado = daoLibro.eliminar(id);
 

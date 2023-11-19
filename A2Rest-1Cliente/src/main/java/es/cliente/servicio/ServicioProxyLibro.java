@@ -38,7 +38,7 @@ public Libro agregarLibro(Libro l) {
 
    public boolean  eliminarLibro(int id) {
 	   try {
-		   restTemplate.delete(URL+id);;
+		   restTemplate.delete(URL+"/"+id);;
 		   return true;
 	   }catch (HttpClientErrorException e) {
 			System.out.println("modificar->  El libro no se ha borrado, id: " + id);
