@@ -60,7 +60,7 @@ public class ServicioProxyLibro {
 	public Libro alta(Libro l){
 		try {
 			
-			ResponseEntity<Libro> re = restTemplate.postForEntity(URL + "/", l, Libro.class);
+			ResponseEntity<Libro> re = restTemplate.postForEntity(URL , l, Libro.class);
 			System.out.println("alta -> Codigo de respuesta " + re.getStatusCode());
 			return re.getBody();
 		} catch (HttpClientErrorException e) {
@@ -81,16 +81,17 @@ public class ServicioProxyLibro {
 	 * @return true en caso de que se haya podido modificar el libro. 
 	 * false en caso contrario.
 	 */
-	public boolean modificar(Libro l){
-		try {
-			
-			restTemplate.put(URL + "/" + l.getIdLibro(), l, Libro.class);
-			return true;
-		} catch (HttpClientErrorException e) {
-			System.out.println("modificar -> La persona NO se ha modificado, id: " + l.getIdLibro());
-		    System.out.println("modificar -> Codigo de respuesta: " + e.getStatusCode());
-		    return false;
-		}
+	public boolean modificar(Libro l) {
+	    try {
+	    	System.out.println("URL para modificar: " + URL + "/" + l.getIdLibro());
+	    	System.out.println("Datos del libro a modificar: " + l);
+	    	restTemplate.put(URL + "/" + l.getIdLibro(), l, Libro.class);
+	        return true;
+	    } catch (HttpClientErrorException e) {
+	        System.out.println("modificar -> El libro NO se ha modificado, id: " + l.getIdLibro());
+	        System.out.println("modificar -> Codigo de respuesta: " + e.getStatusCode());
+	        return false;
+	    }
 	}
 	
 	/**
@@ -135,7 +136,7 @@ public class ServicioProxyLibro {
 			ResponseEntity<Libro[]> response =
 					  restTemplate.getForEntity(URL  + queryParams,Libro[].class);
 			Libro[] arrayPersonas = response.getBody();
-			return Arrays.asList(arrayPersonas);
+			return Arrays.asList(arrayPersonas);//convertimos el array en un ArrayList
 		} catch (HttpClientErrorException e) {
 			System.out.println("listar -> Error al obtener la lista de libros");
 		    System.out.println("listar -> Codigo de respuesta: " + e.getStatusCode());

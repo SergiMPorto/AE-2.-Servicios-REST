@@ -100,8 +100,7 @@ public class Actividad2PspClienteApplication implements CommandLineRunner{
                 case 4: {
                     System.out.println("Ingrese el ID del libro a modificar");
                     int id = scanner.nextInt();
-                    
-
+                    scanner.nextLine();
                     Libro libroModificado = spl.obtener(id);
                     if (libroModificado != null) {
                         System.out.println("Ingrese el nuevo título del libro");
