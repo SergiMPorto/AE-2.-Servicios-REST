@@ -44,7 +44,7 @@ public class DaoLibro {
     public List<Libro> list() {
         return listaLibros;
     }
-/// // Método para añadir un libro verificando duplicados por ID y título
+// Método para añadir un libro y viendo que no se duplique ni por id ni por titulo
     public boolean añadirLibro(Libro l) {
         // Verificar duplicados por ID
         for (Libro libro : listaLibros) {
