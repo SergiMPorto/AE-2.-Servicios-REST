@@ -1,0 +1,33 @@
+package serviciorest.modelo.libro.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.stereotype.Component;
+
+import serviciorest.modelo.entidad.Libro;
+
+@Component
+public class DaoLibro {
+	
+	public List<Libro> listaLibros;
+	
+	public DaoLibro() {
+		
+		System.out.println(" DAOLIBRO ->CREANDO LA LISTA DE LIBROS");
+		listaLibros = new ArrayList<Libro>();
+		Libro l1 = new Libro(6,"Mareas Vivas", "Libro muy interesante", "Follas novas");
+		Libro l2 = new Libro(7,"The witcher", "Inicios del brujo", "Mundo lector");
+		Libro l3 = new Libro(8,"La sombra de la espada", "Libro bélico", "Eu que sei");
+		Libro l4 = new Libro(9,"Arthas", "Aun no me lo he acabado", "Litch King");
+		Libro l5 = new Libro(10,"Dragones y mazmorras", "Un ladrillo de la hostia", "Dungeon master");
+		
+		listaLibros.add(l1);
+		listaLibros.add(l2);
+		listaLibros.add(l3);
+		listaLibros.add(l4);
+		listaLibros.add(l5);
+		
+	}
+}
+		
+	

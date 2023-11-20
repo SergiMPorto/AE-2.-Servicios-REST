@@ -1,0 +1,106 @@
+package serviciorest.modelo.entidad;
+
+import java.util.Objects;
+
+public class Libro {
+
+    private int id;
+    private String titulo;
+    private String autor;
+    private String nota;
+
+    
+    /*
+     * CONSTRUCTOR VACIO
+     */
+    public Libro() {
+       }
+
+    /*
+     *CONSTRUCTOR CON TODO 
+     */
+    public Libro(int id, String titulo, String autor, String nota) {
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.nota = nota;
+    }
+
+    /*
+     * GETTER AND SETTER 
+     */
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
+    }
+
+    /*
+     * toString
+     */
+    @Override
+    public String toString() {
+        return "Libro [id=" + id + ", titulo=" + titulo + ", autor=" + autor + ", nota=" + nota + "]";
+    }
+    /*
+     * SOBREESCRITURA DE HASHCODE Y EQUALS
+     */
+	@Override
+	public int hashCode() {
+		return Objects.hash(autor, id, nota, titulo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Libro other = (Libro) obj;
+		return Objects.equals(autor, other.autor) && id == other.id && Objects.equals(nota, other.nota)
+				&& Objects.equals(titulo, other.titulo);
+	}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}

@@ -1,0 +1,72 @@
+package serviciorest;
+
+import java.util.Scanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ApplicationMenu {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ApplicationMenu.class, args);
+		
+		int opcion =0;
+
+		do {
+		opcion = pintarMenu();
+		switch (opcion) {
+		case 1:
+			System.out.println(" DAR DE ALTA UN LIBRO  ");
+			
+			break;
+		case 2:
+		    System.out.println(" DAR DE BAJA UN LIBRO POR ID ");
+			
+			break;
+		case 3:
+			System.out.println(" MODIFICAR UN LIBRO POR ID ");
+			
+			break;
+		case 4:
+			System.out.println(" OBTENER UN LIBRO POR ID   ");
+			break;
+			
+		case 5 :
+			System.out.println("  LISTAR TODOS LOS LIBROS    ");
+			break;
+			
+			
+		case 6:
+			
+		}
+		
+		}while(opcion != 6);
+		
+		System.out.println(" === FIN DE PROGRAMA === ");
+		}
+	
+
+	public static int pintarMenu() {
+		Scanner leer = new Scanner(System.in);
+		int opcion=0;
+		System.out.println("               ★★★★★ MENU ★★★★★           ");
+		System.out.println("    ---------------------------------------  ");
+		System.out.println("  1.          DAR DE ALTA UN LIBRO           ");
+		System.out.println("  2.       DAR DE BAJA UN LIBRO POR ID       ");
+		System.out.println("  3.        MODIFICAR UN LIBRO POR ID        ");
+		System.out.println("  4.         OBTENER UN LIBRO POR ID         ");
+		System.out.println("  5          LISTAR TODOS LOS LIBROS         ");
+		System.out.println("  6                  SALIR                           ");
+		System.out.println(" PULSA UNA OPCION DE 1 A 5 PARA REALIZAR LA OPERACION O PULSA 6 PARA CERRAR EL PROCESO.");
+		opcion=leer.nextInt();
+     	while (opcion <1 || opcion >6 ) {
+			System.out.println("PULAS UNA OPCION  DE 1 A 4");
+			opcion=leer.nextInt();
+			}
+		return opcion;
+	
+		
+	}
+
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="AE_02_Rest">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <property name="context-root" value="AE_02_Rest"/>
+        <property name="java-output-path" value="/AE_02_Rest/target/classes"/>
+    </wb-module>
+</project-modules>
